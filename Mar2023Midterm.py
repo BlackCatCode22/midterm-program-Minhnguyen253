@@ -1,47 +1,6 @@
 # dH 3/18/2023
 # Mar2023Midterm.py
 print("Midterm Program, Minh Nguyen 0920131")
-# Figuring out how a date object works...
-today = date.today()
-print(today)
-
-a_date = date(2019,3,15)
-print(a_date)
-
-some_date = date(2000,1,2)
-print(some_date)
-
-print("some_date = " + str(some_date))
-
-a_date = today - some_date
-print("some_date difference = " + str(a_date.days))
-
-def calc_age_in_years(birth_date):
-    today = date.today()
-
-    # the parameter birth_date must be a date object
-    # we can subtract one date object from another date object
-    date_diff = today - birth_date
-
-    # Use the .days method on date_diff to get age in days
-    age_in_days = date_diff.days
-
-    # divide by days in a year
-    age_in_years = age_in_days/365.242199
-
-    # truncate to get age in years
-    age_in_years = math.trunc(age_in_years)
-
-    # return a whole number representing years
-    return age_in_years
-
-my_birthday = date(1990,4,9)
-my_age_in_years = calc_age_in_years(my_birthday)
-
-print("my_age_in_years is: " + str(my_age_in_years))
-################ end of date object stuff #################################
-
-print("\n\n\n")
 
 #########################################
 # Get animal names into four lists...
@@ -82,10 +41,6 @@ bears_names_list = list_of_lines[14].replace(',',"").split()
 # the birthday function
 def the_birthday_function(years_old, season_of_birth):
     birth_year = 2023 - int(years_old.strip())
-    # birth_year appears to be off by one, so let's add a year by subtracting one from the birth year
-    # this is a total "hack" by the way. Something is wrong with the birthdate before it is sent to this function,
-    # a good programmer would correct it there. Because I am under time pressure to get this sample code to you,
-    # I will fix my program here ("do not try this at home!")
     birth_year = birth_year - 1
 
     if season_of_birth == "spring":
@@ -132,7 +87,7 @@ lion_list = []
 tiger_list = []
 bear_list = []
 
-print("\n\n Welcome to Dennis's Digital Zoo \n\n")
+print("\n\n Welcome to Minh's Digital Zoo \n\n")
 
 #################### Input File IO ###########################################
 # Open the input file
@@ -185,12 +140,7 @@ for element in my_array:
     split_on_space = my_array[array_line].split(" ")
     print(split_on_space)
 
-    # from this split, get what data elements we can
-    # ['4', 'year', 'old', 'female', 'hyena,', 'born', 'in', 'spring,', 'tan', 'color,', '70', 'pounds,', 'from', 'Friguia', 'Park,', 'Tunisia\n']
-    # years_old will always be the first data element, so we use 0 for the first element in our split list
     years_old = split_on_space[0]
-
-    # output every small change so you know you got it right
     print("years_old: " + years_old)
 
     # next is sex, which will always be the fourth word (element number 3 because list element numbering starts at 0)
@@ -221,44 +171,22 @@ for element in my_array:
     birth_date = the_birthday_function(years_old, season)
     print("birthdate: " + birth_date)
 
-    # increment the number of animals in species
-    # and while we know the species...
     # generate a uniqueID and get a name!
     if (species == "hyena"):
         num_of_hyenas += 1
-
-        # and now we can call uniqueID()
         unique_id = uniqueID(species, num_of_hyenas)
-
-        # get a name from the name list that we created with file io
-        # if we are here, we know we need a hyena name
         name = hyena_names_list[num_of_hyenas]
     elif (species == "lion"):
         num_of_lions += 1
-
-        # and now we can call uniqueID()
         unique_id = uniqueID(species, num_of_lions)
-
-        # get a name from the name list that we created with file io
-        # if we are here, we know we need a lion name
         name = lion_names_list[num_of_lions]
     elif (species == "tiger"):
         num_of_tigers += 1
-
-        # and now we can call uniqueID()
         unique_id = uniqueID(species, num_of_tigers)
-
-        # get a name from the name list that we created with file io
-        # if we are here, we know we need a hyena name
         name = tigers_names_list[num_of_tigers]
     elif (species == "bear"):
         num_of_bears += 1
-
-        # and now we can call uniqueID()
         unique_id = uniqueID(species, num_of_bears)
-
-        # get a name from the name list that we created with file io
-        # if we are here, we know we need a hyena name
         name = bears_names_list[num_of_bears]
     else:
         print("\n error in incrementing species")
@@ -282,10 +210,8 @@ for element in my_array:
     origin = after_split_on_comma[4] + " " + after_split_on_comma[5]
     print("origin = " + origin)
 
-    # desperately trying to get rid of the lf+cr that is showing up in the output file...
     origin = origin.strip()
 
-    # let's split() birth_date on "-" and we can build our date object
     split_on_dash = birth_date.split("-")
     my_year = split_on_dash[0]
     my_month = split_on_dash[1]
@@ -335,9 +261,9 @@ for element in my_array:
     for line in hyena_list:
       print(line + "\n")
 
-    my_file = open("C:/2023spring/pythonRoot/midtermFiles/midTermOutput.txt", "w", encoding="utf-8")
+    my_file = open("C:/myMidterm01/midterm-program-Minhnguyen253/midTermOutput.txt", "w", encoding="utf-8")
 
-    my_file.write("Midterm Program Output; by programmer name, Spring 2023, Fresno, CA\n\n")
+    my_file.write("Midterm Program Output; Minh Nguyen, Spring 2023, Fresno, CA\n\n")
 
     my_file.write("Hyena Habitat: \n\n")
     for i in hyena_list:
@@ -363,7 +289,6 @@ for element in my_array:
         my_file.write("\n")
     my_file.write("\n\n")
 
-    # if you open a barn door, make sure you close it.
     my_file.close()
 
 
